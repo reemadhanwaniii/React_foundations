@@ -9,7 +9,13 @@ function TodoItem(props) {
     const [isFinished,setFinished] = useState(false);
     return (
         <div>
-            <li onClick={(event)=>{
+           {/** 
+            * <li onClick={(event)=>{
+                console.log(event);
+                handleClick(props.todo.data)}}>
+                    <span class={(isFinished)?'todo-done':'todo-notDone'}>{props.todo.data}</span></li>
+           */} 
+           <li onClick={(event)=>{
                 console.log(event);
                 handleClick(props.todo.data)}}>
                     <span class={(isFinished)?'todo-done':'todo-notDone'}>{props.todo.data}</span></li>
