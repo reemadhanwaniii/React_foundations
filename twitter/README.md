@@ -68,3 +68,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## re-rendering
+
+when parent re-render all the callbacks recreated and new callbacks passed to children component the child component didn't realize that they are same callbacks with no change so we need to memoize it(remember it) . if we have to remember it we somehow have to cache it so there is a hook 'useCallback'

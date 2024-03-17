@@ -24,10 +24,31 @@ function Twitter(){
             createdAt: new Date()
         }]);
     }
+
+    const handleEditTweet = (tweet) => { //this incoming tweet is the updated tweet
+        setTweets(
+            tweets.map((currentTweet) => {
+                if(currentTweet.id === tweet.id){
+                    return tweet;
+                }else{
+                    return currentTweet;
+                }
+            })
+        )
+    }
+
+    const sortTweets = () => {
+        tweets.sort((t1,t2) => t2.createdAt.getTime() - t1.createdAt.getTime());
+        setTweets([...tweets]);
+    }
+
     return (
         <div>
           <AddTweet onAddTweet={handleTweet}/>
-          <TweetList tweets={tweets}/>
+          <button onClick={sortTweets}>
+            Sort Tweet By CreatedAt
+          </button>
+          <TweetList tweets={tweets} onEditTweet={handleEditTweet}/>
         </div>
       );
 }
