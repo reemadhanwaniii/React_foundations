@@ -1,5 +1,8 @@
 import Tweet from "./Tweet.jsx";
 import "../CSS/TweetList.css";
+import { memo } from "react";
+
+const MemoisedTweet = memo(Tweet);
 
 function TweetList({ tweets,onEditTweet }) {
     //console.log("TweetList.jsx")
@@ -8,12 +11,14 @@ function TweetList({ tweets,onEditTweet }) {
             {
                 tweets.map((tweet)=>(
                     <li className="tweet" key={tweet.id}>
-                        <Tweet 
+                       <MemoisedTweet 
                                 tweetId={tweet.id}
                                 content={tweet.content}
                                 likeCount={tweet.likeCount} 
                                 createdAt={tweet.createdAt.toString()}
-                                onEdit={onEditTweet}/>
+                             
+                             onEdit={onEditTweet}/>
+                       
                     </li>
                 ))
             }
