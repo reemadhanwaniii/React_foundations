@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <AddTodo addTodo={addTodo}/>
-      <TodoList todos={todos}/>
+      <TodoList todos={todos} setTodos={setTodos}/>
     </div>
   );
 }
