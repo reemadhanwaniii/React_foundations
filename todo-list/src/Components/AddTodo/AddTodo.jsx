@@ -1,7 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import TodoContext from "../../context/TodoContext";
 
-function AddTodo({ addTodo }) {
+function AddTodo() {
+    const {todos,dispatch}= useContext(TodoContext);
     const [todoText,setTodoText] = useState('');
+
+    function addTodo(todoText){
+        dispatch({type: 'add_todo',payload:{todoText}});
+    }
+
     return(
         <>
             <input 
@@ -10,7 +17,7 @@ function AddTodo({ addTodo }) {
                 value={todoText}/>
             <button
                 onClick={()=>{
-                addTodo(todoText)
+                addTodo(todoText);
                 setTodoText('')}}>Submit</button>
         </>
     );
