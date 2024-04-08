@@ -12,7 +12,10 @@ function Form(){
 
     const handleForSubmit = (event) => {
        event.preventDefault();
-       emailRef.current.focus();
+      // emailRef.current.focus();
+      console.log(emailRef);
+      emailRef.current.setInvalid();
+      emailRef.current.shake();
     }
 
     return(
@@ -25,7 +28,7 @@ function Form(){
                         id="email-input"
                         type="email"
                         label="email"
-                        inputRef={emailRef}
+                        ref={emailRef}
                     />
                 </div>
                 <div className="wrapper password-input-wrapper">
@@ -33,7 +36,7 @@ function Form(){
                         id="password-input"
                         type="password"
                         label="password"
-                        inputRef={passwordRef}
+                        ref={passwordRef}
                     />
                 </div>
 
