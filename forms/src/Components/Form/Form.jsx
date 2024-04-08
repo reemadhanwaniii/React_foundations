@@ -1,86 +1,40 @@
-import { useState } from "react";
 import "./Form.css";
-import validatePassword from "../../helper/passwordValidator";
-import validateEmail from "../../helper/emailValidator";
-import { useRef } from "react";
-import { useEffect } from "react";
 import Input from "../Input/Input";
+import { useContext } from "react";
+import { FormContext } from "../providers/FormContext";
+import { useRef } from "react";
 
 function Form(){
 
-    {/*const emailRef = useRef(null);
-    const passwordRef = useRef(null); 
-
-    const exampleRef = useRef(0);
-    const [count,setCount] = useState(0);
-
-    useEffect(()=>{
-        console.log(exampleRef);
-    },[count]);
-
-    const [formValues,setFormValues] = useState({
-        email:"",
-        password:""
-    })
-
-    const handleValidatePassword = () =>{
-        const password = formValues.password;
-
-        if(!validatePassword(password)){
-            passwordRef.current.focus();
-            console.log("Invalid password");
-        }
-    }
-
-    const handleValidateEmail = () => {
-        const email = formValues.email;
-
-        if(!validateEmail(email)){
-            emailRef.current.focus();
-            console.log("Invalid Email");
-        }
-    }*/}
+    const emailRef = useRef(null);
+    const passwordRef = useRef(null);
+    const {formInput} = useContext(FormContext);
 
     const handleForSubmit = (event) => {
        event.preventDefault();
-      // handleValidateEmail();
-       //handleValidatePassword();
+       emailRef.current.focus();
     }
 
     return(
         <div>
             New Form<br/>
-{/*
-            Count : {count}<br/>
-            ExampleRed : {exampleRef.current}<br/>
 
-            <button onClick={()=>setCount(count+1)}>Update Count</button>
-            <button onClick={()=>exampleRef.current++}>Update Ref</button>
-*/}
-            <form onSubmit={handleForSubmit}>
+            <form onSubmit={handleForSubmit} noValidate>
                 <div className="wrapper email-input-wrapper">
-                    {/*<input 
-                        id="email-input"
-                        type="text"
-                        value={formValues.email}
-                        ref={emailRef}
-    onChange={(event)=>setFormValues({...formValues,email: event.target.value})}/>}*/}
                     <Input 
                         id="email-input"
-                        type="text"
+                        type="email"
+                        label="email"
+                        inputRef={emailRef}
                     />
                 </div>
                 <div className="wrapper password-input-wrapper">
-                    {/*<input 
-                        id="password-input"
-                        type="password" 
-                        value={formValues.password}
-                        ref={passwordRef}
-                        onChange={(event)=>setFormValues({...formValues,password: event.target.value})}
-/>}*/}
                     <Input 
                         id="password-input"
-                        type="password"/>
+                        type="password"
+                        label="password"
+                        inputRef={passwordRef}
+                    />
                 </div>
 
                 <input type="submit"/>
