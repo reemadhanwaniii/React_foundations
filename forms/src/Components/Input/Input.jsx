@@ -6,7 +6,7 @@ import './Input.css';
 import { useImperativeHandle } from "react";
 import { useEffect } from "react";
 
-const Input=React.forwardRef(({type,id,label},ref) => {
+function Input({type,id,label,checkOnBlur, placeholder},ref)  {
    
     const {formInput,setFormInput} = useContext(FormContext); 
     const [text,setText] = useState("");
@@ -37,12 +37,16 @@ const Input=React.forwardRef(({type,id,label},ref) => {
                 id={id}
                 ref={ref}
                 value={text}
+                placeholder={placeholder ? placeholder : ''}
+                onBlur={checkOnBlur}
                 onChange={(e)=>{
                     setText(e.target.value);
                     setFormInput({...formInput,[label]:e.target.value})}
                     }/>
+                    <br/>
+            <span>  { (!isValid) ? `${label} is invalid` : ''}</span>
         </>
     )
-});
+}
 
-export default Input;
+export default React.forwardRef(Input);
